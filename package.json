@@ -1,6 +1,6 @@
 {
   "name": "git-affected-files",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get affected files in a git commit",
   "main": "src/index.js",
   "directories": {
