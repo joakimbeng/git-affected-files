@@ -1,7 +1,7 @@
 'use strict';
 const execa = require('execa');
 
-module.exports = exports = function gitAffectedFiles(hash, options) {
+module.exports = exports = function (hash, options) {
 	return execa('git', ['show', '--name-status', '--oneline', '--pretty=format:', hash || ''], options)
 		.then(({stdout}) => filesFromStdout(stdout));
 };
