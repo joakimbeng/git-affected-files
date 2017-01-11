@@ -7,7 +7,7 @@ module.exports = exports = function (hash, options) {
 };
 
 function filesFromStdout(stdout) {
-	return stdout.split('\n').map(parseLine);
+	return stdout.trim().split('\n').map(parseLine);
 }
 
 function parseLine(statusAndName) {
