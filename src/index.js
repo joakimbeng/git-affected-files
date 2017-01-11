@@ -2,7 +2,15 @@
 const execa = require('execa');
 
 module.exports = exports = function (hash, options) {
-	return execa('git', ['show', '--name-status', '--oneline', '--pretty=format:', hash || ''], options)
+	const args = ['show', '--name-status', '--oneline', '--pretty=format:'];
+
+	if (typeof hash === 'string') {
+		args.push(hash);
+	} else if (typeof hash === 'object') {
+		options = hash;
+	}
+
+	return execa('git', args, options)
 		.then(({stdout}) => filesFromStdout(stdout));
 };
 

@@ -17,3 +17,9 @@ test('affected files for specific commit', async t => {
 	]);
 	t.deepEqual(files.map(({status}) => status), ['A', 'A', 'A', 'A', 'A', 'A']);
 });
+
+test('affected files for last commit', async t => {
+	const files = await gitAffectedFiles(FIRST_COMMIT_HASH);
+	const lastFiles = await gitAffectedFiles();
+	t.notDeepEqual(lastFiles, files);
+});
